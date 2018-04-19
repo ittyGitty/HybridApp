@@ -6,11 +6,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = TabsPage;
 
   constructor(
     platform: Platform, 
@@ -23,7 +25,7 @@ export class MyApp {
 const authObserver = angFir.app.auth().onAuthStateChanged(
   (user) => {
     if(user){
-      this.rootPage = HomePage;
+      this.rootPage = TabsPage;
     }else{
       this.rootPage = 'AuthorizePage';
     }

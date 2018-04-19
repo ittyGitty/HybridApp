@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 
 //import { Camera } from '@ionic-native/camera';
 
@@ -23,11 +24,14 @@ import { AngularFireStorage } from 'angularfire2/storage';
 
 //https://www.npmjs.com/package/@ionic-native/geolocation
 import { Geolocation as geo } from '@ionic-native/geolocation';
+import { DetailPage } from '../pages/detail/detail';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,9 @@ import { Geolocation as geo } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    DetailPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
