@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SellPage } from '../pages/sell/sell';
 
 //import { Camera } from '@ionic-native/camera';
 
@@ -31,7 +32,8 @@ import { DetailPage } from '../pages/detail/detail';
     MyApp,
     HomePage,
     DetailPage,
-    TabsPage
+    TabsPage,
+    SellPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { DetailPage } from '../pages/detail/detail';
     MyApp,
     HomePage,
     DetailPage,
-    TabsPage
+    TabsPage,
+    SellPage
   ],
   providers: [
     StatusBar,

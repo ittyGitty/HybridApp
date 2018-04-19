@@ -7,6 +7,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SellPage } from '../pages/sell/sell';
 
 @Component({
   templateUrl: 'app.html'
