@@ -3,8 +3,8 @@ import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
-  //templateUrl: 'home.html',
-  templateUrl: 'search/template.html'
+  templateUrl: 'home.html',
+  //templateUrl: 'search/template.html'
 })
 export class HomePage {
 
@@ -18,8 +18,7 @@ export class HomePage {
   initializeItems() {
     this.items = [
       'Amsterdam',
-      'Bogota',
-      ...
+      'Bogota'
     ];
   }
 
