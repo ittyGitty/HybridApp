@@ -16,6 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SellPage } from '../pages/sell/sell';
 
+
 //import { Camera } from '@ionic-native/camera';
 
 import env from './env';
@@ -25,13 +26,12 @@ import { AngularFireStorage } from 'angularfire2/storage';
 
 //https://www.npmjs.com/package/@ionic-native/geolocation
 import { Geolocation as geo } from '@ionic-native/geolocation';
-import { DetailPage } from '../pages/detail/detail';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    DetailPage,
     TabsPage,
     SellPage
   ],
@@ -47,7 +47,6 @@ import { DetailPage } from '../pages/detail/detail';
   entryComponents: [
     MyApp,
     HomePage,
-    DetailPage,
     TabsPage,
     SellPage
   ],

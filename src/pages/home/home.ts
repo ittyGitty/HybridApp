@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Post } from '../../models/Post';
 
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -23,12 +24,19 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     private af: AngularFirestore,
+ 
   ) {
     
-    
-    this.initializeItems();
-
     this.collection = af.collection<Post>("posts");
+    
+
+    this.getPostCollection();
+    //this.initializeItems();
+
+  }
+
+  getPostCollection(){
+    
     this.posts = this.collection.snapshotChanges()
                   .map(actions =>  {
                     return actions.map(action => {
@@ -41,29 +49,54 @@ export class HomePage {
                       };
                     })
                   });
-
   }
 
   goToDetailPage(post: Post) {
     this.navCtrl.push('DetailPage', {
       post,
       postCollection: this.collection
-    })
+    });
   }
 
   initializeItems() {
+
+  
+
+/*
+    this.posts.subscribe((data: any)=> {
+    this.items.push(data);
+-------------------------------------
+     this.posts.map((post)=> post.entries).subscribe((data)=>{
+     this.items.push(data);
+   })
+  }); 
+
+  ------------------------------
+    */
     this.items = [
       'Amsterdam',
       'Bogota'
     ];
+    
   }
 
   getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeItems();
 
+    //this.getPostCollection();
+
     // set val to the value of the searchbar
     let val = ev.target.value;
+
+/*
+    if (val && val.trim() != '') {
+      this.posts = this.posts.filter((title) => {
+        return (title.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+*/
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
@@ -72,4 +105,4 @@ export class HomePage {
       })
     }
   }
-}
+  }

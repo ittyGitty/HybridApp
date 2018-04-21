@@ -17,16 +17,16 @@
 
 <!-- https://ionicframework.com/docs/components/#sliding-list -->
 <ion-list>
-  <ion-item-sliding>
-    <ion-item *ngFor="let post of posts | async">
+  <ion-item-sliding *ngFor="let post of posts | async">
+    <ion-item >
       {{ post.title }}
       <ion-avatar item-start>
-        <img [src]="post.imgUrl">
+        <img [src]="post.imgUrl" >
       </ion-avatar>
       <h2>{{post.body}}</h2> 
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="danger" (click)="goToDetailPage(Post)">
+      <button ion-button color="dark" (click)="goToDetailPage(post)">
         <ion-icon name="search"></ion-icon>
         See listing
       </button>

@@ -7,12 +7,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Detail</ion-title>
+    <ion-title>Listing</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
+  <ion-content padding>
+    {{post.title}}
+  
+    <ion-list>
+      <ion-item *ngFor="let comment of comments | async">
+        {{comment.body}}
+      </ion-item>
+    </ion-list>
+  
+    <ion-input [(ngModel)]="commentText"></ion-input>
+    <button ion-button (click)="addComment()">Legg til kommentar</button>
+  </ion-content>
 
 </ion-content>
