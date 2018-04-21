@@ -15,15 +15,14 @@
 
 <ion-content padding>
  <!--https://ionicframework.com/docs/components/#card-image-->
-    <ion-card>
-        <img src="img/nin-live.png"/>
+    <ion-card *ngFor="let post of posts | async">
+        <img [src]="post.imgUrl"/>
         <ion-card-content>
           <ion-card-title>
-            Nine Inch Nails Live
+            {{post.title}}
             </ion-card-title>
           <p>
-            The most popular industrial group ever, and largely
-            responsible for bringing the music to a mass audience.
+            {{post.body}}
           </p>
           <ion-list>
             <ion-row><br> </ion-row>
@@ -50,7 +49,9 @@
       </ion-card>
 
       <ion-fab right bottom>
-          <button ion-fab color="light"><ion-icon name="add-circle"></ion-icon></button>
+          <button ion-fab color="light" (click)="goToAddPostPage(post)">
+            <ion-icon name="add-circle"></ion-icon
+              ></button>
         </ion-fab>
 
 </ion-content>

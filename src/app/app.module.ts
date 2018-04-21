@@ -20,7 +20,7 @@ import { SellPage } from '../pages/sell/sell';
 //import { Camera } from '@ionic-native/camera';
 
 import env from './env';
-//import { PlacesProvider } from '../providers/places/places';
+import { PlacesProvider } from '../providers/places/places';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireStorage } from 'angularfire2/storage';
 
@@ -56,8 +56,8 @@ import { Geolocation as geo } from '@ionic-native/geolocation';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     //Camera,
     AngularFireStorage,
-    geo
-    //PlacesProvider
+    geo,
+    PlacesProvider
   ]
 })
 export class AppModule {}

@@ -8,15 +8,68 @@
 
   <ion-navbar>
     <ion-title>Listing</ion-title>
+  
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+
 
 
   <ion-content padding>
+
+
+    <!--https://ionicframework.com/docs/components/#card-image-->
+    <ion-card>
+      <img src="post.imgUrl"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{post.title}}
+          </ion-card-title>
+        <p>
+          {{post.body}}
+        </p>
+        <ion-list>
+          <ion-row><br> </ion-row>
+          <ion-row>
+            <ion-col>
+        
+                <button block ion-button>
+                    <ion-icon name="planet" item-start></ion-icon>
+                    Edit
+                  </button>
+           
+          </ion-col>
+          <ion-col>
+      
+                <button block ion-button>
+                    <ion-icon name="trashcan" item-start></ion-icon>
+                    Sold
+                  </button>
+        
+                </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-item *ngFor="let comment of comments | async">
+              {{comment.body}}
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-input [(ngModel)]="commentText"></ion-input>
+            </ion-row>
+            <ion-row>
+    <button block ion-button (click)="addComment()">Legg til kommentar</button>
+
+          </ion-row>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+
+
+<!--
     {{post.title}}
   
     <ion-list>
@@ -28,5 +81,5 @@
     <ion-input [(ngModel)]="commentText"></ion-input>
     <button ion-button (click)="addComment()">Legg til kommentar</button>
   </ion-content>
-
+-->
 </ion-content>

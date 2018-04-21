@@ -80,6 +80,10 @@ export class HomePage {
     
   }
 
+  logout() {
+    this.af.app.auth().signOut();
+  }
+
   getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeItems();
