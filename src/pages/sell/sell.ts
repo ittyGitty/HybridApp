@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
-
+import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../../models/Post';
@@ -21,18 +21,20 @@ export class SellPage {
 
   public collection: AngularFirestoreCollection<Post>;
   public posts: Observable<Post[]>;
-  public user = {};
+  public userPosts: Observable<Post[]>;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private af: AngularFirestore) {
+    private af: AngularFirestore,
+    private afStorage : AngularFireStorage,) {
 
-let user = this.af.app.auth().currentUser.email;
 
-      this.collection = af.collection<Post>("posts");
+     this.collection = af.collection<Post>('posts', (ref) => {
+                        return ref.where('author', '==', this.af.app.auth().currentUser.email);
+                      });
       this.posts = this.collection.snapshotChanges()
-                  .filter((post)=> this.af.app.auth().currentUser.email == user)
+            //      .filter((post)=> post.author == this.af.app.auth().currentUser.email)
                     .map(actions =>  {
                       return actions.map(action => {
                         let data = action.payload.doc.data() as Post;
@@ -45,13 +47,21 @@ let user = this.af.app.auth().currentUser.email;
                       })
                     });
 
+
+     
+    
   }
 
   ionViewDidLoad() {
-    /*const personRef: firebase.database.Reference = firebase.database().ref(`/person1/`);
-  personRef.on('value', personSnapshot => {
-    this.user = personSnapshot.val();
-  }); */
+    /*
+    const task_stream =
+  // Makes a stream of all the tasks in the database
+  this.afStorage.app.database.arguments.getTasks().
+    // Get tasks only for this user
+    filter((task) => task.author == this.af.app.auth().currentUser.email)
+    // Only get name of task
+    .map((task) => task.post)
+  */
   }
 
   goToAddPostPage() {

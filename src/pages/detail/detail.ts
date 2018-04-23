@@ -33,6 +33,15 @@ export class DetailPage {
                         .valueChanges(); 
   }
 
+  addComment() {
+    this.postCollection
+          .doc(this.post.id)
+          .collection("comments")
+          .add({
+            body: this.commentText
+          });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
   }

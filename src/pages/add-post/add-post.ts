@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Post } from '../../models/Post';
-//import { Camera } from '@ionic-native/camera'
-//import { EncodingType } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera'
+import { EncodingType } from '@ionic-native/camera';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlacesProvider } from '../../providers/places/places';
@@ -17,13 +17,15 @@ export class AddPostPage {
 
   public postCollection: AngularFirestoreCollection<Post>;
   public postText: string = "";
+  public title: string = "";
   private previewImage: string = "";
   private locationAddress: string = "";
+
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    //private camera: Camera,
+    private camera: Camera,
     private af : AngularFirestore,
     private afStorage : AngularFireStorage,
     private geolocation: Geolocation,
@@ -40,15 +42,16 @@ export class AddPostPage {
       .putString(this.previewImage, 'base64', {contentType: 'image/png'});
 
     let uploadEvent = task.downloadURL();
-/*
+
     uploadEvent.subscribe((uploadImageUrl)=>{
       this.postCollection.add({ 
+        title: this.title,
         body: this.postText,
         locationAddress: this.locationAddress,
         author: this.af.app.auth().currentUser.email,
         imgUrl : uploadImageUrl
       } as Post);
-    }); */
+    }); 
   }
 
   findGeolocation(){
@@ -63,7 +66,7 @@ export class AddPostPage {
         console.error(error);
       });
   }
-/*
+
   executeCamera(){
     this.camera.getPicture({
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -75,5 +78,5 @@ export class AddPostPage {
       this.previewImage = imgBase64;
     });
   }
-*/
+
 }

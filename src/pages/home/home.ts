@@ -72,12 +72,12 @@ export class HomePage {
   }); 
 
   ------------------------------
-    */
+    
     this.items = [
       'Amsterdam',
       'Bogota'
     ];
-    
+    */
   }
 
   logout() {
@@ -86,27 +86,27 @@ export class HomePage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+   // this.initializeItems();
 
-    //this.getPostCollection();
+    this.getPostCollection();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
 
-/*
+
     if (val && val.trim() != '') {
       this.posts = this.posts.filter((title) => {
         return (title.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
-*/
 
+/*
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-  }
+  } */
   }

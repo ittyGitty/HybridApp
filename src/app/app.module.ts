@@ -17,7 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SellPage } from '../pages/sell/sell';
 
 
-//import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 
 import env from './env';
 import { PlacesProvider } from '../providers/places/places';
@@ -54,7 +54,7 @@ import { Geolocation as geo } from '@ionic-native/geolocation';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    //Camera,
+    Camera,
     AngularFireStorage,
     geo,
     PlacesProvider
