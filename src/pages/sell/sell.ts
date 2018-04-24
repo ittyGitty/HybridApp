@@ -29,7 +29,7 @@ export class SellPage {
     private af: AngularFirestore,
     private afStorage : AngularFireStorage,) {
 
-
+      //forelesning 12
      this.collection = af.collection<Post>('posts', (ref) => {
                         return ref.where('author', '==', this.af.app.auth().currentUser.email);
                       });
@@ -68,6 +68,13 @@ export class SellPage {
     this.navCtrl.push('AddPostPage', {
       postCollection: this.collection
     })
+  }
+
+  goToEditPostPage(post: Post) {
+    this.navCtrl.push('EditPostPage', {
+      post,
+      postCollection: this.collection
+    });
   }
 
 }

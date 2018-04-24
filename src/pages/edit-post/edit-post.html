@@ -1,0 +1,45 @@
+<!--
+  Generated template for the EditPostPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Edit listing</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-grid>
+          <ion-row>
+              <ion-input placeholder= {{post.title}} [(ngModel)]="title"></ion-input>
+          </ion-row>
+          <ion-row>
+              <ion-input placeholder= {{post.body}} [(ngModel)]="postText"></ion-input>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <button block ion-button (click)="executeCamera()">Ta nytt bilde</button>
+            </ion-col>
+            <ion-col>
+               <button block ion-button (click)="findGeolocation()">Legg til ny lokasjon</button>
+            </ion-col>
+            <ion-col>
+                <button block ion-button (click)="editPost()">Lagre</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <p><b>Lokasjon:</b> {{locationAddress}} </p>
+          </ion-row>
+          <!--hvis det er et bilde der vises det, hvis ikke: inget ikon-->
+          <ion-row>
+            <img *ngIf="previewImage.length > 0" style="height:300px" 
+            [src]="'data:image/jpeg;base64,' + previewImage"/>
+          </ion-row>
+        </ion-grid>
+      
+  </ion-content>
