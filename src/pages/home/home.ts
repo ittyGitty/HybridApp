@@ -16,6 +16,8 @@ export class HomePage {
 
   searchQuery: string = '';
   items: string[];
+  author: string;
+  title: string;
 
   //Postene vi får fra Firebase - observable fordi det er i endring, vi leser endringene kontinuerlig
   public collection: AngularFirestoreCollection<Post>;
@@ -45,6 +47,8 @@ export class HomePage {
 
                       return {
                         id,
+                        title: data.title,
+                        author: data.author,
                         ...data
                       };
                     })
@@ -58,9 +62,10 @@ export class HomePage {
     });
   }
 
-  goToComposeEmailPage(post: Post) {
+  goToComposeEmailPage(author: string, title: string) {
     this.navCtrl.push('ComposeEmailPage', {
-      post,
+      author,
+      title,
       postCollection: this.collection
     });
   }

@@ -17,18 +17,18 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'authorize.html',
 })
 export class AuthorizePage {
-
+/*
   public user = {
     username: "",
     password: ""
   }
 
-/*
+*/
 public user = {
   username: "ine@online.com",
     password: "jegvilinnpåappenmin123"
 };
-*/
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -61,11 +61,6 @@ public user = {
   }
 
  
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AuthorizePage');
-  }
-
   showAlertBadChoicePassword() {
     let alert = this.alertCtrl.create({
       title: 'Sorry',
