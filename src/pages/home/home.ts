@@ -58,6 +58,13 @@ export class HomePage {
     });
   }
 
+  goToComposeEmailPage(post: Post) {
+    this.navCtrl.push('ComposeEmailPage', {
+      post,
+      postCollection: this.collection
+    });
+  }
+
   initializeItems() {
 
   

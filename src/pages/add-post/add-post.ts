@@ -7,6 +7,7 @@ import { EncodingType } from '@ionic-native/camera';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlacesProvider } from '../../providers/places/places';
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -29,7 +30,8 @@ export class AddPostPage {
     private af : AngularFirestore,
     private afStorage : AngularFireStorage,
     private geolocation: Geolocation,
-    private placesProvider: PlacesProvider
+    private placesProvider: PlacesProvider,
+    public toastCtrl: ToastController
   ) {
     this.postCollection = navParams.get('postCollection');
   }
@@ -52,6 +54,8 @@ export class AddPostPage {
         imgUrl : uploadImageUrl
       } as Post);
     }); 
+
+    this.presentToast();
   }
 
   findGeolocation(){
@@ -77,6 +81,14 @@ export class AddPostPage {
     .then(imgBase64 => {
       this.previewImage = imgBase64;
     });
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Listing added successfully',
+      duration: 3000
+    });
+    toast.present();
   }
 
 }

@@ -16,7 +16,6 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SellPage } from '../pages/sell/sell';
 
-
 import { Camera } from '@ionic-native/camera';
 
 import env from './env';
@@ -27,13 +26,21 @@ import { AngularFireStorage } from 'angularfire2/storage';
 //https://www.npmjs.com/package/@ionic-native/geolocation
 import { Geolocation as geo } from '@ionic-native/geolocation';
 
+import { EmailComposer } from '@ionic-native/email-composer';
+import { AddPostPage } from '../pages/add-post/add-post';
+import { EditPostPage } from '../pages/edit-post/edit-post';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     TabsPage,
-    SellPage
+    SellPage,
+    //ComposeEmailPage,
+    AddPostPage,
+    EditPostPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,8 @@ import { Geolocation as geo } from '@ionic-native/geolocation';
     Camera,
     AngularFireStorage,
     geo,
-    PlacesProvider
+    PlacesProvider,
+    EmailComposer
   ]
 })
 export class AppModule {}
