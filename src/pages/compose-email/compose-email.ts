@@ -17,7 +17,6 @@ import { Post } from '../../models/Post';
 })
 export class ComposeEmailPage {
 
-public emailComposer : EmailComposer;
 public post: Post;
 public postCollection: AngularFirestoreCollection<Post>;
 
@@ -30,6 +29,8 @@ public postCollection: AngularFirestoreCollection<Post>;
       this.post = navParams.get('post');
       this.postCollection = navParams.get('postCollection');
 
+     
+
       let email = {
         to: this.post.author,
         cc: this.af.app.auth().currentUser.email,
@@ -37,7 +38,10 @@ public postCollection: AngularFirestoreCollection<Post>;
         body: 'How are you? Nice greetings from Leipzig',
         isHtml: true
       };
- 
+
+  
+
+      this.EmailComposer.open(email);
     }
 
   
