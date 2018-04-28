@@ -10,6 +10,9 @@ import { Post } from '../../models/Post';
  * Ionic pages and navigation.
  */
 
+
+//https://ionicframework.com/docs/native/email-composer/
+
 @IonicPage()
 @Component({
   selector: 'page-compose-email',
@@ -19,6 +22,7 @@ export class ComposeEmailPage {
 
 public post: Post;
 public postCollection: AngularFirestoreCollection<Post>;
+
 
   constructor(
     public navCtrl: NavController, 
@@ -36,6 +40,10 @@ public postCollection: AngularFirestoreCollection<Post>;
         body: 'How are you? Nice greetings from Leipzig',
         isHtml: true
       };
+
+      // add alias
+     
+
       this.EmailComposer.open(email);
     }
 

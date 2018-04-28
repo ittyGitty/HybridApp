@@ -29,6 +29,7 @@ import { Geolocation as geo } from '@ionic-native/geolocation';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AddPostPage } from '../pages/add-post/add-post';
 import { EditPostPage } from '../pages/edit-post/edit-post';
+//import { HTTP } from '@ionic-native/http';
 
 
 
@@ -37,10 +38,7 @@ import { EditPostPage } from '../pages/edit-post/edit-post';
     MyApp,
     HomePage,
     TabsPage,
-    SellPage,
-    //ComposeEmailPage,
-    AddPostPage,
-    EditPostPage
+    SellPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +46,8 @@ import { EditPostPage } from '../pages/edit-post/edit-post';
     AngularFireModule.initializeApp(env, 'TDS200_703842'), //importerer firebase/app for alt
     AngularFirestoreModule, 
     AngularFireAuthModule, //importerer firebase/auth for autorisering
-    HttpClientModule
+    HttpClientModule,
+    //HTTP
   ],
   bootstrap: [IonicApp],
   entryComponents: [

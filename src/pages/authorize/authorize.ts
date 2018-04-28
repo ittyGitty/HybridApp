@@ -27,7 +27,7 @@ export class AuthorizePage {
 public user = {
   username: "ine@online.com",
     password: "jegvilinnpåappenmin123"
-};
+}; 
 
   constructor(
     public navCtrl: NavController, 
