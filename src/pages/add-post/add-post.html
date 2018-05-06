@@ -16,25 +16,46 @@
 <ion-content padding>
     <ion-grid>
         <ion-row>
-            <ion-input placeholder="Skriv tittel her" [(ngModel)]="title"></ion-input>
+            <ion-input placeholder="Add title" [(ngModel)]="title"></ion-input>
         </ion-row>
         <ion-row>
-            <ion-input placeholder="Skriv ny post her" [(ngModel)]="postText"></ion-input>
+          <ion-item>
+              <ion-range pin=true min="0" max="800" step="10" color="secondary" [(ngModel)]="price" #ctrl="ngModel">
+                 <ion-icon range-left name="pricetag"></ion-icon>
+              </ion-range>
+          </ion-item>
+            
+        </ion-row>
+        <ion-row>
+            <ion-input placeholder="Write precription here" [(ngModel)]="postText"></ion-input>
+        </ion-row>
+      
+        <ion-row>
+          
+          <ion-col>
+             <button block ion-button (click)="findGeolocation()">
+                <ion-icon name="pin"></ion-icon>
+             </button>
+          </ion-col>
+          <ion-col>
+              <button block ion-button (click)="executeCamera()"> 
+                <ion-icon name="camera"></ion-icon>
+              </button>
+            </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <button block ion-button (click)="executeCamera()">Ta bilde</button>
-          </ion-col>
-          <ion-col>
-             <button block ion-button (click)="findGeolocation()">Hent GPS</button>
-          </ion-col>
-          <ion-col>
-              <button block ion-button (click)="addPost()">Legg til post</button>
+              <p>Location: {{locationAddress}} </p>
           </ion-col>
         </ion-row>
-        <ion-row>
-          <p><b>Lokasjon:</b> {{locationAddress}} </p>
-        </ion-row>
+            <ion-row>
+                <ion-col>
+                    <button block ion-button (click)="addPost()">Add listing</button>
+                </ion-col>
+            </ion-row>
+          
+          
+        
         <!--hvis det er et bilde der vises det, hvis ikke: inget ikon-->
         <ion-row>
           <img *ngIf="previewImage.length > 0" style="height:300px" 

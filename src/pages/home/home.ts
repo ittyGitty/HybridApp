@@ -17,29 +17,29 @@ import { forEach } from '@firebase/util/dist/esm/src/obj';
 export class HomePage {
 
   searchQuery: string = '';
-  items: string [];
-  filteredPosts: Array <Post>;
+  items: Array<Post>;
+  filteredPosts: string [];
+
 
   //Postene vi får fra Firebase - observable fordi det er i endring, vi leser endringene kontinuerlig
   public collection: AngularFirestoreCollection<Post>;
   public posts: Observable<Post[]>;
+  public post : Post;
 
   constructor(
     public navCtrl: NavController, 
     private af: AngularFirestore,
- 
   ) {
     
     this.collection = af.collection<Post>("posts");
     
-
     this.getPostCollection();
     //this.initializeItems();
 
   }
 
   getPostCollection(){
-    
+   
     this.posts = this.collection.snapshotChanges()
                   .map(actions =>  {
                     return actions.map(action => {
@@ -48,6 +48,7 @@ export class HomePage {
 
                       return {
                         id,
+                        title: data.title,
                         ...data
                       };
                     })
@@ -69,92 +70,119 @@ export class HomePage {
   }
 
   initializeItems() {
+/*
+    this.posts.forEach(post => {
+      this.filteredPosts.push(this.post)
+    });
 
+/*
     this.posts.subscribe((_posts) =>{
       this.filteredPosts = [];
       _posts.forEach(post =>{
           this.filteredPosts.push(post);
-          return this.filteredPosts;
+      
         })
-      });
+      }); */
 /*
-    this.collection = this.af.collection<Post>(posts => {
-      return ref
-      .onSnapshot(querySnapshot => {
-        this.items = [];
-        querySnapshot.forEach(posts => {
-          this.items.push('title');
-        })
-      });
-    });
-
-/*
-    querySnapshot.forEach(function (doc) {
-      let title = doc.data()['title']; 
-      this.items.push(title);
-    });
-/*
-    this.collection("title")
-    .onSnapshot(function(querySnapshot) {
-        this.items = [];
-        querySnapshot.forEach(function(posts) {
-            this.items.push(posts.data().title);
-        });
-
-
-    this.posts.subscribe((title: any) => {
-    this.items.push(title);
-  }) */
-}
-
-
-/*    
--------------------------------------
-     this.posts.map((post)=> post.entries).subscribe((data)=>{
-     this.items.push(data);
-   })
-  }); 
-
-  ------------------------------
-    
     this.items = [
       'Amsterdam',
       'Bogota'
     ];
-    */
-  
+*/
+  }
 
   logout() {
     this.af.app.auth().signOut();
   }
 
-  getItems(ev: any) {
+
+
+  getPosts(ev: any) {
     // Reset items back to all of the items
-   this.initializeItems();
+    //this.initializeItems();
 
-    //this.getPostCollection();
+    this.getPostCollection();
 
-    // set val to the value of the searchbar
-    let val = ev.target.value;
+        // set val to the value of the searchbar
+        let val = ev.target.value;
+/*
+    this.posts.subscribe((_posts) =>{
+      this.filteredPosts = [];
+      _posts.forEach(post =>{
+          this.filteredPosts.push(post);
+      console.log(this.filteredPosts.toString)
+        })
+      });
 
-   
-      
-    
+*/
 
 
+/*
+    this.items = Array<Post>();
+    this.collection.snapshotChanges()
+    .map(actions =>  {
+      return actions.map(action => {
+        let data = action.payload.doc.data() as Post;
+        let id = action.payload.doc.id;
+        this.items.push(data);
+      })
+    });
+        /*
     if (val && val.trim() != '') {
-      this.filteredPosts = this.filteredPosts.filter((title) => {
-        return (JSON.stringify(title).toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.filteredPosts = this.filteredPosts.filter((post) => {
+        this.filteredPosts.find(function(post){return Post === val;});
       })
     }
   
 
+    if (val && val.trim() != '') {
+      this.posts = this.items.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+*/
+
+
+
+/*
+let filteredPosts = [];
+  for(let i=0, l=this.items.length; i<l; i++) {
+    if(val && val.trim() != ''){
+      this.items[i]['title'].toLowerCase().indexOf(val.toLowerCase()) > -1;
+      //this.filteredPosts.push(this.items[i]['title']);
+      this.filteredPosts.push(this.items[i]['title'].toLowerCase().indexOf(val.toLowerCase()) > -1);
+    }
+  }
+ //return filteredPosts;
+}
 /*
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    } */
-  } 
+    }*/ 
+/*
+    if (val && val.trim() != '') {
+return this.posts.map(posts =>posts.filter((post) => {
+   return (post.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+}))
+ */
+
+ /*
+
+if (val && val.trim() != '') {
+  this.posts
+  .map(posts => {
+    let filter = posts.filter(post => post.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    return (filter.length > 0) ? filter[0] : null;
+  });
 }
+*/
+if (val && val.trim() != '') {
+  return this.posts[1];
+}
+  
+  }
+}
+

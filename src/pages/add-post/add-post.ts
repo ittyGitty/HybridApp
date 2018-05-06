@@ -19,6 +19,7 @@ export class AddPostPage {
   public postCollection: AngularFirestoreCollection<Post>;
   public postText: string = "";
   public title: string = "";
+  public price: number = 0;
   private previewImage: string = "";
   private locationAddress: string = "";
 
@@ -47,8 +48,9 @@ export class AddPostPage {
 
     uploadEvent.subscribe((uploadImageUrl)=>{
       this.postCollection.add({ 
-        title: this.title,
+        title: this.title.toUpperCase(),
         body: this.postText,
+        price: this.price,
         locationAddress: this.locationAddress,
         author: this.af.app.auth().currentUser.email,
         imgUrl : uploadImageUrl

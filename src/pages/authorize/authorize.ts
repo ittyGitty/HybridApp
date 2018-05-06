@@ -40,6 +40,7 @@ public user = {
     this.angFir.app.auth()
     .signInWithEmailAndPassword(this.user.username, this.user.password)
     .then(response =>{
+      console.log('hva faaaaen');
       console.log(response);
     })
     .catch(error => {
@@ -78,6 +79,11 @@ public user = {
     });
     alert.present();
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AuthorizePage');
+  }
+
 }
 
 
