@@ -42,6 +42,13 @@ export class DetailPage {
           });
   }
 
+  goToComposeEmailPage(post : Post) {
+    this.navCtrl.push('ComposeEmailPage', {
+      post,
+      postCollection: this.postCollection
+    });
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailPage');
   }

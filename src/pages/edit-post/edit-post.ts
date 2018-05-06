@@ -25,6 +25,7 @@ export class EditPostPage {
   public postCollection: AngularFirestoreCollection<Post>;
   public postText: string = "";
   public title: string = "";
+  public price: number = 0;
   private previewImage: string = "";
   private locationAddress: string = "";
   public post: Post;
@@ -58,6 +59,7 @@ export class EditPostPage {
         .update({ 
         title: this.title,
         body: this.postText,
+        price: this.price,
         locationAddress: this.locationAddress,
         author: this.af.app.auth().currentUser.email,
         imgUrl : uploadImageUrl

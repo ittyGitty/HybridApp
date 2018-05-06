@@ -37,7 +37,7 @@ public postCollection: AngularFirestoreCollection<Post>;
         to: this.post.author,
         cc: this.af.app.auth().currentUser.email,
         subject: this.post.title,
-        body: 'How are you? Nice greetings from Leipzig',
+        body: 'Hi, I am interested in buying your book!',
         isHtml: true
       };
 
