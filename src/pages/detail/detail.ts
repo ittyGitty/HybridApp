@@ -27,12 +27,14 @@ export class DetailPage {
     this.post = navParams.get('post');
     this.postCollection = navParams.get('postCollection');
 
+    //henter kommentarene som hører til gitt id.
     this.comments = this.postCollection
                         .doc(this.post.id)
                         .collection("comments")
                         .valueChanges(); 
   }
 
+  //legger til kommentar til riktig id.
   addComment() {
     this.postCollection
           .doc(this.post.id)

@@ -55,6 +55,7 @@ export class HomePage {
                   });
   }
 
+  //sender post og samling videre til detaljsiden:
   goToDetailPage(post: Post) {
     this.navCtrl.push('DetailPage', {
       post,
@@ -62,6 +63,7 @@ export class HomePage {
     });
   }
 
+  //sender post og samling videre for epost
   goToComposeEmailPage(post : Post) {
     this.navCtrl.push('ComposeEmailPage', {
       post,

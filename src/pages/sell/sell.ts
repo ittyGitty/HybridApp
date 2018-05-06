@@ -5,6 +5,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../../models/Post';
+import { AlertController } from 'ionic-angular';
 /**
  * Generated class for the SellPage page.
  *
@@ -27,7 +28,8 @@ export class SellPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private af: AngularFirestore,
-    private afStorage : AngularFireStorage,) {
+    private afStorage : AngularFireStorage,
+    public alertCtrl: AlertController) {
 
       //forelesning 12
      this.collection = af.collection<Post>('posts', (ref) => {
@@ -46,11 +48,38 @@ export class SellPage {
                         };
                       })
                     });
-
-
-     
-    
   }
+
+
+thisWillRemovePost(post: Post){
+  let prompt = this.alertCtrl.create({
+    title: 'Beware',
+    message: "This will delete your listing completely",
+    buttons: [
+      {
+        text: 'Cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Confirm',
+        handler: data => {
+          this.collection.doc(post.id)
+        .delete().then(function(){
+          //KALLPÅ DELETED
+        
+        }).catch(function(error){
+          console.error("wooops", error);
+
+        });
+        }
+      }
+    ]
+  });
+  prompt.present();
+
+}
 
   ionViewDidLoad() {
     /*

@@ -30,14 +30,14 @@
               <ion-col>
           
                   <button block ion-button (click)= "goToEditPostPage(post)">
-                      <ion-icon name="planet" item-start></ion-icon>
+                    
                       Edit
                     </button>
              
             </ion-col>
             <ion-col>
         
-                  <button block ion-button>
+                  <button block ion-button (click)="thisWillRemovePost(post)" >
                       <ion-icon name="trashcan" item-start></ion-icon>
                       Sold
                     </button>

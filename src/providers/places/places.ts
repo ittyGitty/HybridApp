@@ -18,6 +18,7 @@ export class PlacesProvider {
 
   }
 
+  //henter lokasjon basert på lengde- og breddegrad, med min egen api-nøkkel hentet fra nett.
   getAddressBasedOnLatLng(lat: number, lng: number){
     return new Promise((resolve, reject) => {
       this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true&key=${this.GOOGLE_API_KEY}`)

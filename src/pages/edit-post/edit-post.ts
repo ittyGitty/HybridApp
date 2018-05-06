@@ -69,6 +69,9 @@ export class EditPostPage {
     this.presentToast();
   }
 
+  //bruker placesprovider til å hente currentPosition, etter nivå 1.
+  //lytter til resultater, hvis svar setter den lokasjon,
+  //hvis noe er galt logges en error.
   findGeolocation(){
     this.geolocation.getCurrentPosition()
       .then(position => {
@@ -82,6 +85,7 @@ export class EditPostPage {
       });
   }
 
+  //
   executeCamera(){
     this.camera.getPicture({
       destinationType: this.camera.DestinationType.DATA_URL,
