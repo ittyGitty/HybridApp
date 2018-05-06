@@ -25,20 +25,22 @@
 <ion-list>
   <ion-item-sliding *ngFor="let post of posts | async">
     <ion-item >
-      {{post.title}}
+     <b> {{post.title}}</b><br>
       <ion-avatar item-start>
         <img [src]="post.imgUrl" >
       </ion-avatar>
+      <ion-icon name="ios-pricetag-outline">{{post.price}}</ion-icon>
       <h2>{{post.body}}</h2> 
+      <ion-icon name="arrow-dropleft" item-end></ion-icon>
     </ion-item>
     <ion-item-options side="right">
-      <button ion-button color="dark" (click)="goToDetailPage(post)">
-        <ion-icon name="search"></ion-icon>
-        See listing
+      <button ion-button color="primary" (click)="goToDetailPage(post)">
+        <ion-icon name="open"></ion-icon>
+        open
       </button>
-      <button ion-button color="secondary" (click)= "goToComposeEmailPage(post)" >
-        <ion-icon name="text"></ion-icon>
-        Text
+      <button ion-button color="danger" (click)= "goToComposeEmailPage(post)" >
+        <ion-icon name="mail"></ion-icon>
+        e-mail
       </button>
     </ion-item-options>
   </ion-item-sliding>

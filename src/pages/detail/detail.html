@@ -35,32 +35,30 @@
           <ion-row>
             <ion-col>
         
-                <button block ion-button>
-                    <ion-icon name="planet" item-start></ion-icon>
-                    Edit
-                  </button>
+                <ion-icon name="pricetag">{{post.price}}</ion-icon>
            
           </ion-col>
           <ion-col>
       
-                <button block ion-button>
-                    <ion-icon name="trashcan" item-start></ion-icon>
-                    Sold
+                <button block ion-button color="buy">
+                 
+                    Buy
                   </button>
         
                 </ion-col>
           </ion-row>
 
           <ion-row>
+            <h2>Comments</h2>
             <ion-item *ngFor="let comment of comments | async">
-              {{comment.body}}
+             <p> {{comment.body}}</p>
             </ion-item>
           </ion-row>
           <ion-row>
-            <ion-input [(ngModel)]="commentText"></ion-input>
+            <ion-input placeholder="Write comment" [(ngModel)]="commentText"></ion-input>
             </ion-row>
             <ion-row>
-    <button block ion-button (click)="addComment()">Legg til kommentar</button>
+    <button block ion-button (click)="addComment()">Post</button>
 
           </ion-row>
         </ion-list>
